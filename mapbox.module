@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @defgroup mapbox MapBox: Provides MapBox layers to OpenLayers
+ */
+
+/**
+ * @file
+ * MapBox Layer Type Definition
+ *
+ * This file holds the main Drupal hook functions,
+ * and the openlayers API functions for the openlayers module.
+ */

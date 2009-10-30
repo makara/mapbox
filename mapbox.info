@@ -1,0 +1,5 @@
+name = MapBox
+description = MapBox Layers for OpenLayers
+core = 6.x
+dependencies[] = "OpenLayers"
+
