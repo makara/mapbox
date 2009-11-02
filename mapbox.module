@@ -11,3 +11,58 @@
  * This file holds the main Drupal hook functions,
  * and the openlayers API functions for the openlayers module.
  */
+
+/**
+ * Implementation of openlayers_layers_handler_info()
+ * For OpenLayers Module 1.x
+ */
+function mapbox_openlayers_layer_handler() {
+  return array(
+    'MapBox' => array(
+      'layer_handler' => 'MapBox',
+      'js_file' => $js_file
+    )
+  );
+}
+
+/**
+ * Implementation of hook_openlayers_layers_info().
+ * For OpenLayers Module 1.x
+ */
+function mapbox_openlayers_layers_info() {
+  $file = drupal_get_path('module', 'mapbox') .'/includes/mapbox.layers.inc';
+  $callback = 'mapbox_process_layers';
+  $info = array();
+
+  // Define info array
+  $info['MapBox'] = array(
+    'name' => t('MapBox'),
+    'description' => t('Any of the publicly available MapBox layers.'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  return $info;
+}
+
+/**
+ * Implementation of openlayers_layer_type
+ */
+function mapbox_openlayers_layer_types() {
+  return array(
+    'openlayers_layer_type_mapbox' => array(
+      'title' => t('MapBox'),
+      'description' => t('MapBox Maps'),
+      'type' => 'layer',
+      'path' => drupal_get_path('module', 'mapbox') .'/includes/layer_types',
+      'file' => 'mapbox.inc',
+      'layer_type' => array(
+        'class' => 'openlayers_layer_type_mapbox',
+        'parent' => 'openlayers_layer_type',
+      ),
+    ),
+  );
+}
+
+
