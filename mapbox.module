@@ -35,9 +35,58 @@ function mapbox_openlayers_layers_info() {
   $info = array();
 
   // Define info array
-  $info['MapBox'] = array(
-    'name' => t('MapBox'),
-    'description' => t('Any of the publicly available MapBox layers.'),
+  $info['MapBox_world-print'] = array(
+    'name' => t('MapBox World Print'),
+    'description' => t('Printable World Map'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  // Define info array
+  $info['MapBox_world-dark'] = array(
+    'name' => t('MapBox World Dark'),
+    'description' => t('Dark World Map'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  $info['MapBox_dc-nightvision'] = array(
+    'name' => t('MapBox DC Nightvision'),
+    'description' => t('DC Nightvision'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  $info['MapBox_world-light'] = array(
+    'name' => t('World Light'),
+    'description' => t('World Light'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  $info['MapBox_afghanistan-summer'] = array(
+    'name' => t('Afghanistan Summer'),
+    'description' => t('Afghanistan Summer'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  $info['MapBox_afghanistan-winter'] = array(
+    'name' => t('Afghanistan Winter'),
+    'description' => t('Afghanistan Winter'),
+    'projection' => array('900913'),
+    'baselayer' => TRUE,
+    'file' => $file,
+    'callback' => $callback,
+  );
+  $info['MapBox_afghanistan-grey'] = array(
+    'name' => t('Afghanistan Grey'),
+    'description' => t('Afghanistan Grey'),
     'projection' => array('900913'),
     'baselayer' => TRUE,
     'file' => $file,

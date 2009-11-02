@@ -58,12 +58,13 @@ Drupal.openlayers.layer.MapBox = function (name, map, options) {
  * For OpenLayers 1.x
  */
 OL.Layers.MapBox = function(layerOptions, mapid) {
-  console.log('called!');
-    var mapOptions = {
-      sphericalMercator: true,
-      maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34)
+  var mapOptions = {
+    sphericalMercator: true,
+    maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34)
   };
-
+  if (OpenLayers.Control.Attribution !== undefined) {
+    OL.maps[mapid].map.addControl(new OpenLayers.Control.Attribution());
+  }
   jQuery.extend(mapOptions, layerOptions.options);
   var layer = new OpenLayers.Layer.MapBox(
     layerOptions.name,
