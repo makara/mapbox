@@ -5,9 +5,14 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
    */
   function options_init() {
     return array(
-      'layer_type' => 'mapbox',
-      'baselayer' => TRUE,
       'maxExtent' => array(-20037508.34,-20037508.34,20037508.34,20037508.34),
+      'baselayer' => TRUE,
+      'serverResolutions' => openlayers_get_resolutions('900913'),
+      'resolutions' => openlayers_get_resolutions('900913'),
+      'maxExtent' => openlayers_get_extent('900913'),
+      'projection' => array('900913'),
+      'baselayer' => TRUE,
+      'layer_handler' => 'MapBox',
     );
   }
 
@@ -19,6 +24,11 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'layername' => array(
         '#type' => 'textfield',
         '#title' => t('Layer Name'),
+        '#default_value' => $this->data['layername']
+      ),
+      'layer_type' => array(
+        '#type' => 'hidden',
+        '#value' => 'openlayers_layer_type_mapbox'
       ),
       'projection' =>
         array(
@@ -34,7 +44,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
    * Render.
    */
   function render(&$map) {
-    drupal_add_js(drupal_get_path('module', 'mapbox') .'/js/mapbox.js');
+    drupal_add_js(drupal_get_path('module', 'mapbox') .'/includes/layer_types/mapbox.js');
     return $this->options;
   }
 }
