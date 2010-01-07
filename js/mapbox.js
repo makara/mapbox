@@ -20,6 +20,7 @@ OpenLayers.Layer.MapBox = OpenLayers.Class(OpenLayers.Layer.TMS, {
             maxResolution: 156543.0339,
             units: "m",
             type: "png",
+            buffer: 0,
             projection: "EPSG:900913",
             isBaseLayer: true,
             numZoomLevels: 19,
