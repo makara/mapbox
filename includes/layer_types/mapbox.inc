@@ -45,6 +45,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
    */
   function render(&$map) {
     drupal_add_js(drupal_get_path('module', 'mapbox') .'/includes/layer_types/mapbox.js');
+    drupal_add_css(drupal_get_path('module', 'mapbox') .'/js/mapbox.css');
     return $this->options;
   }
 }
