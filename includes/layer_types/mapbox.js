@@ -32,6 +32,9 @@ OpenLayers.Layer.MapBox = OpenLayers.Class(OpenLayers.Layer.TMS, {
             "http://c.tile.mapbox.com/",
             "http://c.tile.mapbox.com/"
         ];
+        if (options.osm) {
+          options.attribution = "<a class='mapbox-branding' href='http://mapbox.com'></a> | <a href='http://mapbox.com/tos'>Terms of Service</a> | Data CCBYSA OSM"
+        }
         newArguments = [name, urls, options];
         OpenLayers.Layer.TMS.prototype.initialize.apply(this, newArguments);
     },
