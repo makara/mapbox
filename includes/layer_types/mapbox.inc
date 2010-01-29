@@ -32,7 +32,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'osm' => array(
         '#type' => 'checkbox',
         '#default_value' => $this->data['osm'] ? $this->data['osm'] : FALSE,
-        '#title' => t('OSM Attribution Required (map contains OpenStreetMap roads)')
+        '#title' => t('OSM Attribution Required (map contains OpenStreetMap data)')
       ),
       'resolutions' => array(
         '#type' => 'select',
