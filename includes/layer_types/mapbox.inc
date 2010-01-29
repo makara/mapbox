@@ -8,7 +8,6 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'maxExtent' => array(-20037508.34,-20037508.34,20037508.34,20037508.34),
       'baselayer' => TRUE,
       'serverResolutions' => openlayers_get_resolutions('900913'),
-      'resolutions' => openlayers_get_resolutions('900913'),
       'maxExtent' => openlayers_get_extent('900913'),
       'projection' => array('900913'),
       'baselayer' => TRUE,
@@ -29,6 +28,13 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'layer_type' => array(
         '#type' => 'hidden',
         '#value' => 'openlayers_layer_type_mapbox'
+      ),
+      'resolutions' => array(
+        '#type' => 'select',
+        '#multiple' => TRUE,
+        '#options' => array_combine(openlayers_get_resolutions('900913'), range(0, 18)),
+        '#title' => t('Zoom Level Range'),
+        '#default_value' => $this->data['resolutions'],
       ),
       'projection' =>
         array(
