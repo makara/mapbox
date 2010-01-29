@@ -32,7 +32,10 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'resolutions' => array(
         '#type' => 'select',
         '#multiple' => TRUE,
-        '#options' => array_combine(openlayers_get_resolutions('900913'), range(0, 18)),
+        '#options' => array_combine(
+          array_map(strval, openlayers_get_resolutions('900913')), 
+          range(0, 18)
+        ),
         '#title' => t('Zoom Level Range'),
         '#default_value' => $this->data['resolutions'],
       ),
@@ -43,6 +46,9 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
           '#value' => '900913',
         ),
       ),
+      '#default_value' => ($this->data['resolutions']) ? 
+                              $this->data['resolutions'] : 
+                              array_map(strval, openlayers_get_resolutions('900913'))
     );
   }
 
