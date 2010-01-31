@@ -23,6 +23,10 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'layername' => array(
         '#type' => 'textfield',
         '#title' => t('Layer Name'),
+        '#description' => t('The TMS layer name: this will be specified on
+          a website and used as part of every tile URL. It is the portion of 
+          the tileset directly after the TMS version number, 
+          like 1.0.0/layername'),
         '#default_value' => $this->data['layername']
       ),
       'layer_type' => array(
