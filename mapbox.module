@@ -2,7 +2,31 @@
 
 /**
  * @defgroup mapbox MapBox: Provides MapBox layers to OpenLayers
+ * This module has no UI; it only implements hooks in OpenLayers 2.x
+ * and Gmap
  */
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function mapbox_ctools_plugin_api($module, $api) {
+  if ($module == "openlayers") {
+    switch ($api) {
+      case 'openlayers_layers':
+        return array('version' => 1);
+      case 'openlayers_styles':
+        return array('version' => 1);
+    }
+  }
+}
+
+/**
+ * Implementation of hook_openlayers_styles()
+ */
+function mapbox_openlayers_styles_info() {
+  module_load_include('inc', 'mapbox', 'includes/mapbox.styles');
+  return _mapbox_openlayers_styles();
+}
 
 /**
  * @file
@@ -76,41 +100,6 @@ function mapbox_layers_info() {
 }
 
 /**
- * Implementation of openlayers_layers_handler_info()
- * For OpenLayers Module 1.x
- */
-function mapbox_openlayers_layer_handler() {
-  return array(
-    'MapBox' => array(
-      'layer_handler' => 'MapBox',
-      'js_file' => $js_file
-    )
-  );
-}
-
-/**
- * Implementation of hook_openlayers_layers_info().
- * For OpenLayers Module 1.x
- */
-function mapbox_openlayers_layers_info() {
-  $file = drupal_get_path('module', 'mapbox') .'/includes/mapbox.layers.inc';
-  $callback = 'mapbox_process_layers';
-  $info = mapbox_layers_info();
-  $layers = array();
-  foreach ($info as $name => $layer) {
-    $layers[$name] = array(
-      'name' => $layer['name'],
-      'description' => $layer['description'],
-      'projection' => $layer['projection'],
-      'baselayer' => $layer['baselayer'],
-      'file' => $file,
-      'callback' => $callback,
-    );
-  }
-  return $layers;
-}
-
-/**
  * Implementation of openlayers_layer_type
  */
 function mapbox_openlayers_layer_types() {
@@ -128,6 +117,8 @@ function mapbox_openlayers_layer_types() {
     ),
   );
 }
+
+
 
 /**
  * Implementation of hook_gmap()

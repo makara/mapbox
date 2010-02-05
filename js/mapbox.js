@@ -54,22 +54,3 @@ Drupal.openlayers.layer.MapBox = function (name, map, options) {
   layer.styleMap = styleMap;
   return layer;
 }
-
-/**
- * For OpenLayers 1.x
- */
-OL.Layers.MapBox = function(layerOptions, mapid) {
-  var mapOptions = {
-    sphericalMercator: true,
-    maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34)
-  };
-  if (OpenLayers.Control.Attribution !== undefined) {
-    OL.maps[mapid].map.addControl(new OpenLayers.Control.Attribution());
-  }
-  jQuery.extend(mapOptions, layerOptions.options);
-  var layer = new OpenLayers.Layer.MapBox(
-    layerOptions.name,
-    mapOptions
-  );
-  return layer;
-}
