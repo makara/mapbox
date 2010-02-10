@@ -22,11 +22,8 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
     return array(
       'layername' => array(
         '#type' => 'textfield',
-        '#title' => t('Layer Name'),
-        '#description' => t('The TMS layer name: this will be specified on
-          a website and used as part of every tile URL. It is the portion of 
-          the tileset directly after the TMS version number, 
-          like 1.0.0/layername'),
+        '#title' => t('MapBox Layer Name'),
+        '#description' => t('The layer name specified on MapBox.com'),
         '#default_value' => $this->data['layername']
       ),
       'layer_type' => array(
@@ -36,8 +33,24 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'osm' => array(
         '#type' => 'checkbox',
         '#default_value' => $this->data['osm'] ? $this->data['osm'] : FALSE,
-        '#title' => t('OSM Attribution Required (map contains OpenStreetMap data)')
+        '#title' => t('OSM Attribution'),
+        '#description' => t('Required if OpenStreetMap data is used')
       ),
+      'baselayer' => array(
+        '#type' => 'checkbox',
+        '#default_value' => $this->data['baselayer'] ? $this->data['baselayer'] : TRUE,
+        '#title' => t('BaseLayer'),
+        '#description' => t('Uncheck to make this map an overlay')
+      ),
+      /*
+      'mini_attribution' => array(
+        '#type' => 'checkbox',
+        '#default_value' => $this->data['mini_attribution'] ? 
+          $this->data['mini_attribution'] : FALSE,
+        '#title' => t('Mini Attribution'),
+        '#description' => t('Use small logo and text, for mini maps.')
+      ),
+       */
       'resolutions' => array(
         '#type' => 'select',
         '#multiple' => TRUE,
@@ -56,8 +69,8 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
         ),
       ),
       '#default_value' => ($this->data['resolutions']) ? 
-                              $this->data['resolutions'] : 
-                              array_map(strval, openlayers_get_resolutions('900913'))
+        $this->data['resolutions'] : 
+        array_map(strval, openlayers_get_resolutions('900913'))
     );
   }
 
