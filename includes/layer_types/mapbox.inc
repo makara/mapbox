@@ -13,6 +13,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'osm' => FALSE,
       'baselayer' => TRUE,
       'layer_handler' => 'MapBox',
+      'type' => 'png',
     );
   }
 
@@ -45,6 +46,12 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
         '#default_value' => $this->data['baselayer'],
         '#title' => t('BaseLayer'),
         '#description' => t('Uncheck to make this map an overlay')
+      ),
+      'type' => array(
+        '#title' => t('File extension'),
+        '#type' => 'select',
+        '#default_value' => $this->data['type'],
+        '#options' => drupal_map_assoc(array('png', 'jpg')),
       ),
       /*
       'mini_attribution' => array(
