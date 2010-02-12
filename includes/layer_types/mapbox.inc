@@ -10,6 +10,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'serverResolutions' => openlayers_get_resolutions('900913'),
       'maxExtent' => openlayers_get_extent('900913'),
       'projection' => array('900913'),
+      'osm' => FALSE,
       'baselayer' => TRUE,
       'layer_handler' => 'MapBox',
     );
@@ -19,6 +20,9 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
    * Options form which generates layers
    */
   function options_form() {
+    if (!$this->data) {
+      $this->data = $this->options_init();
+    }
     return array(
       'layername' => array(
         '#type' => 'textfield',
@@ -32,13 +36,13 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       ),
       'osm' => array(
         '#type' => 'checkbox',
-        '#default_value' => $this->data['osm'] ? $this->data['osm'] : FALSE,
+        '#default_value' => $this->data['osm'],
         '#title' => t('OSM Attribution'),
         '#description' => t('Required if OpenStreetMap data is used')
       ),
       'baselayer' => array(
         '#type' => 'checkbox',
-        '#default_value' => $this->data['baselayer'] ? $this->data['baselayer'] : TRUE,
+        '#default_value' => $this->data['baselayer'],
         '#title' => t('BaseLayer'),
         '#description' => t('Uncheck to make this map an overlay')
       ),
