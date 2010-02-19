@@ -26,7 +26,7 @@ OpenLayers.Layer.MapBox = OpenLayers.Class(OpenLayers.Layer.TMS, {
             displayOutsideMaxExtent: true,
             wrapDateLine: true
         }, options);
-        urls = [
+        urls = (options.urls) ? options.urls : [
             "http://a.tile.mapbox.com/",
             "http://b.tile.mapbox.com/",
             "http://c.tile.mapbox.com/",
