@@ -57,7 +57,7 @@ function _mapbox_openlayers_styles() {
 
   $styles = array();
 
-  foreach($icon_templates as $icon_title => $icon_template) {
+  foreach ($icon_templates as $icon_title => $icon_template) {
     $icon_url = $base_url . '/' . drupal_get_path('module', 'mapbox') . 
       '/includes/maki/' . sprintf($icon_template, 15);
     $icon_name = strtr(basename($icon_template, '.png'),

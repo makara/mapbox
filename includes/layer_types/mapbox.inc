@@ -1,12 +1,15 @@
 <?php
+// $Id$
+
+/**
+ * @file MapBox layer type definition for OpenLayers
+ */
 class openlayers_layer_type_mapbox extends openlayers_layer_type {
   /**
    * Provide initial values for options.
    */
   function options_init() {
     return array(
-      'maxExtent' => array(-20037508.34,-20037508.34,20037508.34,20037508.34),
-      'baselayer' => TRUE,
       'serverResolutions' => openlayers_get_resolutions('900913'),
       'maxExtent' => openlayers_get_extent('900913'),
       'projection' => array('900913'),
