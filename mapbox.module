@@ -21,9 +21,16 @@ function mapbox_ctools_plugin_api($module, $api) {
 }
 
 /**
- * Implementation of hook_openlayers_styles()
+ * OpenLayers pre-alpha3 compatibility
  */
 function mapbox_openlayers_styles_info() {
+  return mapbox_openlayers_styles();
+}
+
+/**
+ * Implementation of hook_openlayers_styles()
+ */
+function mapbox_openlayers_styles() {
   module_load_include('inc', 'mapbox', 'includes/mapbox.styles');
   return _mapbox_openlayers_styles();
 }
