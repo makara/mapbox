@@ -1,5 +1,3 @@
 name = MapBox
-description = MapBox Layers for OpenLayers
+description = MapBox Layers for OpenLayers and GMaps
 core = 6.x
-dependencies[] = openlayers
-
