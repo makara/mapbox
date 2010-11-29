@@ -14,6 +14,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
       'maxExtent' => openlayers_get_extent('900913'),
       'projection' => array('900913'),
       'osm' => FALSE,
+      'layername' => '',
       'baselayer' => TRUE,
       'layer_handler' => 'MapBox',
       'type' => 'png',
@@ -73,7 +74,8 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
           range(0, 18)
         ),
         '#title' => t('Zoom Level Range'),
-        '#default_value' => $this->data['resolutions'],
+        '#default_value' => isset($this->data['resolutions']) ?
+          $this->data['resolutions'] : array(),
       ),
       'projection' =>
         array(
