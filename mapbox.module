@@ -42,7 +42,6 @@ function mapbox_openlayers_styles() {
  * This file holds the main Drupal hook functions,
  * and the openlayers API functions for the openlayers module.
  */
-
 function mapbox_layers_info() {
   $info = array();
     // Define info array
@@ -107,27 +106,6 @@ function mapbox_layers_info() {
 }
 
 /**
- * Implementation of openlayers_layer_type
- */
-function mapbox_openlayers_layer_types() {
-  return array(
-    'openlayers_layer_type_mapbox' => array(
-      'title' => t('MapBox'),
-      'description' => t('MapBox Maps'),
-      'type' => 'layer',
-      'path' => drupal_get_path('module', 'mapbox') .'/includes/layer_types',
-      'file' => 'mapbox.inc',
-      'layer_type' => array(
-        'class' => 'openlayers_layer_type_mapbox',
-        'parent' => 'openlayers_layer_type',
-      ),
-    ),
-  );
-}
-
-
-
-/**
  * Implementation of hook_gmap()
  */
 function mapbox_gmap($op, &$map) {
@@ -153,4 +131,23 @@ function mapbox_gmap($op, &$map) {
       $map = array_merge($map, $layers);
       break;
   }
+}
+
+/**
+ * Implementation of openlayers_layer_type
+ */
+function mapbox_openlayers_layer_types() {
+  return array(
+    'openlayers_layer_type_mapbox' => array(
+      'title' => t('MapBox'),
+      'description' => t('MapBox Maps'),
+      'type' => 'layer',
+      'path' => drupal_get_path('module', 'mapbox') .'/includes/layer_types',
+      'file' => 'mapbox.inc',
+      'layer_type' => array(
+        'class' => 'openlayers_layer_type_mapbox',
+        'parent' => 'openlayers_layer_type',
+      ),
+    ),
+  );
 }
