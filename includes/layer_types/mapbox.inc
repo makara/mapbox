@@ -25,7 +25,7 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
    * Options form which generates layers
    */
   function options_form() {
-    if (!$this->data) {
+    if (!isset($this->data)) {
       $this->data = $this->options_init();
     }
     return array(
@@ -84,9 +84,6 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
           '#value' => '900913',
         ),
       ),
-      '#default_value' => ($this->data['resolutions']) ? 
-        $this->data['resolutions'] : 
-        array_map('strval', openlayers_get_resolutions('900913'))
     );
   }
 
