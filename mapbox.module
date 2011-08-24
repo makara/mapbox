@@ -122,10 +122,14 @@ function mapbox_gmap($op, &$map) {
   }
   switch ($op) {
     case 'pre_theme_map':
-      drupal_add_js(drupal_get_path('module', 'mapbox') . '/js/gmapbox.js');
+      drupal_add_js(drupal_get_path('module', 'mapbox') . '/js/gmapbox.js', array('weight' => 2));
       drupal_add_js(array('gmapbox' => array('mapdefs' => $layers['Mapbox'])), 'setting');
       $js = 'http://js.mapbox.com/g/2/mapbox.js';
-      drupal_set_html_head('<script src="' . $js . '" type="text/javascript"></script>');
+      $element = array(
+        '#type' => 'markup',
+        '#markup' => '<script type="text/javascript" src="' . $js . '"></script>',
+      );
+      drupal_add_html_head($element, 'mapbox_gmap');
       break;
     case 'baselayers':
       $map = array_merge($map, $layers);
