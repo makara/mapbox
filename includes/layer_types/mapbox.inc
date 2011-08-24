@@ -56,20 +56,11 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
         '#default_value' => $this->data['type'],
         '#options' => drupal_map_assoc(array('png', 'jpg')),
       ),
-      /*
-      'mini_attribution' => array(
-        '#type' => 'checkbox',
-        '#default_value' => $this->data['mini_attribution'] ? 
-          $this->data['mini_attribution'] : FALSE,
-        '#title' => t('Mini Attribution'),
-        '#description' => t('Use small logo and text, for mini maps.')
-      ),
-       */
       'resolutions' => array(
         '#type' => 'select',
         '#multiple' => TRUE,
         '#options' => array_combine(
-          array_map('strval', openlayers_get_resolutions('900913')), 
+          array_map('strval', openlayers_get_resolutions('900913')),
           range(0, 18)
         ),
         '#title' => t('Zoom Level Range'),
@@ -90,8 +81,8 @@ class openlayers_layer_type_mapbox extends openlayers_layer_type {
    * Render.
    */
   function render(&$map) {
-    drupal_add_js(drupal_get_path('module', 'mapbox') .'/includes/layer_types/mapbox.js');
-    drupal_add_css(drupal_get_path('module', 'mapbox') .'/js/mapbox.css');
+    drupal_add_js(drupal_get_path('module', 'mapbox') . '/includes/layer_types/mapbox.js');
+    drupal_add_css(drupal_get_path('module', 'mapbox') . '/js/mapbox.css');
     return $this->options;
   }
 }

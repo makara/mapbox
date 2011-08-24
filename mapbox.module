@@ -122,10 +122,10 @@ function mapbox_gmap($op, &$map) {
   }
   switch ($op) {
     case 'pre_theme_map':
-      drupal_add_js(drupal_get_path('module', 'mapbox') .'/js/gmapbox.js');
+      drupal_add_js(drupal_get_path('module', 'mapbox') . '/js/gmapbox.js');
       drupal_add_js(array('gmapbox' => array('mapdefs' => $layers['Mapbox'])), 'setting');
       $js = 'http://js.mapbox.com/g/2/mapbox.js';
-      drupal_set_html_head('<script src="'. $js .'" type="text/javascript"></script>');
+      drupal_set_html_head('<script src="' . $js . '" type="text/javascript"></script>');
       break;
     case 'baselayers':
       $map = array_merge($map, $layers);
@@ -142,7 +142,7 @@ function mapbox_openlayers_layer_types() {
       'title' => t('MapBox'),
       'description' => t('MapBox Maps'),
       'type' => 'layer',
-      'path' => drupal_get_path('module', 'mapbox') .'/includes/layer_types',
+      'path' => drupal_get_path('module', 'mapbox') . '/includes/layer_types',
       'file' => 'mapbox.inc',
       'layer_type' => array(
         'class' => 'openlayers_layer_type_mapbox',
